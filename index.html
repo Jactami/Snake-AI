@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+	<meta charset="utf-8">
+    <title>Snake AI</title>
+    <meta name="description" content="An AI playing Snake">
+    <meta name="author" content="Jactami">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.js"></script>
+    <script src="main.js"></script>
+    <script src="aStarSolver.js"></script>
+    <script src="hamiltonSolver.js"></script>
+</head>
+
+<body>
+    <div id="canvasContainer"></div>
+    <div id="controlContainer">
+        <div>
+            <label for="solver">Solver:
+                <select name="solver" id="solver">
+                    <option value="0">A*</option>
+                    <option value="1">Hamiltonian Cycle</option>
+                </select>
+            </label>
+        </div>
+        <div>
+            <label for="cols">Columns:
+                <input type="number" name="cols" id="cols" min="2" max="25" value="19">
+            </label>
+            <label for="rows">Rows:
+                <input type="number" name="cols" id="rows" min="2" max="25" value="20">
+            </label>
+        </div>
+        <div>
+            <label for="speed">Speed:
+                <input type="range" name="speed" id="speed" min="1" max="10" value="3">
+                <span id="speedFeedback"></span>
+            </label>
+        </div>
+        <div>
+            <label for="showPath">
+                <input type="checkbox" name="showPath" id="showPath" checked>
+                Show Path
+            </label>
+        </div>
+        <div>
+            <p>Press ENTER to start/ pause the game.</p>
+            <p id="score"></p>
+            <p id="result"></p>
+        </div>
+    </div>
+</body>
+
+</html>
