@@ -76,6 +76,9 @@ function prepareGame() {
         case "1":
             solver = new HamiltonSolver(cols, rows);
             break;
+        case "2":
+            solver = new FastHamilton(cols, rows);
+            break;
         default:
             solver = new AStarSolver(cols, rows);
     }
