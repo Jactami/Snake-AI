@@ -10,7 +10,8 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.js"></script>
     <script src="main.js"></script>
     <script src="aStarSolver.js"></script>
-    <script src="hamiltonSolvers.js"></script>
+    <script src="hamiltonSolver.js"></script>
+    <script src="fastHamiltonSolver.js"></script>
 </head>
 
 <body>
@@ -19,7 +20,7 @@
         <div>
             <label for="solver">Solver:
                 <select name="solver" id="solver">
-                    <option value="0">A* (shortest path)</option>
+                    <option value="0" selected>A* (shortest path)</option>
                     <option value="1">Hamiltonian Cycle</option>
                     <option value="2">Fast Hamilton</option>
                 </select>
