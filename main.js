@@ -105,8 +105,10 @@ function draw() {
     // draw snake
     let offset = floor(unit * 0.075);
     fill(255);
-    for (let i = 1; i < snake.length; i++) {
-        square(snake[i].x * unit + offset, snake[i].y * unit + offset, unit - offset * 2);
+    for (let i = 0; i < snake.length - 1; i++) {
+        let w = abs(snake[i + 1].x - snake[i].x) * unit + unit - 2 * offset;
+        let h = abs(snake[i + 1].y - snake[i].y) * unit + unit - 2 * offset;
+        rect(min(snake[i].x, snake[i + 1].x) * unit + offset, min(snake[i].y, snake[i + 1].y) * unit + offset, w, h);
     }
     fill(0, 0, 255);
     square(snake[0].x * unit + offset, snake[0].y * unit + offset, unit - offset * 2);
