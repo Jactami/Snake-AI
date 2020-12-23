@@ -45,11 +45,12 @@ class FastHamilton extends HamiltonSolver {
 
                 // discard too short shortcuts
                 let collisionAhead = false;
+                let offset = (this.cols % 2 === 1) === (this.rows % 2 === 1) ? 2 : 1;
                 for (let j = shortcut.length - 1; j >= 0; j--) {
                     for (let k = snake.length - 1; k >= 0; k--) {
                         if (shortcut[j].x === snake[k].x && shortcut[j].y === snake[k].y) {
                             // check if path to body part is shorter than body part to tail end
-                            if (j <= snake.length - k) {
+                            if (j - offset < snake.length - k) {
                                 collisionAhead = true;
                                 break;
                             }
