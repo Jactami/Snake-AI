@@ -2,6 +2,9 @@ class FastHamilton extends HamiltonSolver {
 
     constructor(cols, rows) {
         super(cols, rows);
+
+        console.clear();
+        console.log("fast hamilton solver created.")
     }
 
     getPath(snake, food) {
