@@ -43,21 +43,24 @@ class FastHamilton extends HamiltonSolver {
                 if (foodIdx < 0)
                     continue;
 
-                // discard too short shortcuts
-                let collisionAhead = false;
-                let offset = (this.cols % 2 === 1) === (this.rows % 2 === 1) ? 2 : 1;
-                for (let j = shortcut.length - 1; j >= 0; j--) {
+                // discard (potentially) too short shortcuts
+                let isTooShort;
+                let tail = snake[snake.length - 1];
+                for (let j = 0; j < shortcut.length && isTooShort === undefined; j++) {
+                    let spot = shortcut[j];
                     for (let k = snake.length - 1; k >= 0; k--) {
-                        if (shortcut[j].x === snake[k].x && shortcut[j].y === snake[k].y) {
-                            // check if path to body part is shorter than body part to tail end
-                            if (j - offset < snake.length - k) {
-                                collisionAhead = true;
-                                break;
+                        if (spot.x === snake[k].x && spot.y === snake[k].y) {
+                            // check if first collision with body part is the tail end
+                            if (spot.x === tail.x && spot.y === tail.y) {
+                                isTooShort = false;
+                            } else {
+                                isTooShort = true;
                             }
+                            break;
                         }
                     }
                 }
-                if (collisionAhead)
+                if (isTooShort)
                     continue;
 
                 // shortcut accepted
